@@ -4,30 +4,55 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Marketing Email Randomizer</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <h1>Welcome to the Marketing Email Randomizer</h1>
-        <h3>When you need to do an email marketing test, you need to randomize the emails. You can do it here!</h3>
-        <br />
-        <hr />
-        <br />
-        <form>
-        <label for="emails">Paste your emails, each separated by one space (" "), right here:</label>
-        <input id="emails" type="text" />
-        <button id="emailsBtn" type="submit">Submit Emails</button>
-        </form>
-        <br />
-        <p id="finalEmails"></p>
-        <script src="script.js"></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Marketing Email Randomizer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>Welcome to the Marketing Email Randomizer</h1>
+    <h3>
+      When you need to do an email marketing test, you need to randomize the
+      emails. You can do it here, no need to pay big bucks to people who are already richer than JLo!
+    </h3>
+    <br />
+    <hr />
+    <br />
+    <form>
+      <label for="emails">
+        Paste your emails, each separated by one space (" "), right here:
+      </label>
+      <input id="emails" type="text" />
+      <button id="emailsBtn" type="submit" onclick="clickSubmit(); return false;">
+        Submit Emails
+      </button>
+    </form>
+    <br />
+    <p id="finalEmails"></p>
+
+    <script>
+      function clickSubmit() {
+        let input = document.getElementById("emails").value;
+        let finalEmails = document.getElementById("finalEmails");
+        let emailStrings = [];
+
+        let splitEmails = input.split(" ");
+        for (let i = 0; i < splitEmails.length * 10; i++) {
+          emailStrings.push(
+            splitEmails[Math.floor(Math.random() * splitEmails.length)]
+          );
+        }
+        document.getElementById("finalEmails").innerHTML = emailStrings.join("<br />");
+      }
+    </script>
+  </body>
 </html>
